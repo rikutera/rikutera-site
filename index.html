@@ -193,26 +193,6 @@
             color: #9CA3AF;
         }
 
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 24px;
-        }
-
-        .slider-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #CBD5E1;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .slider-dot.active {
-            background: #1E3A8A;
-        }
-
         @media (max-width: 1240px) {
             .article-card {
                 flex: 0 0 calc((100vw - 40px - 72px) / 4);
@@ -585,7 +565,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="slider-dots" id="sliderDots"></div>
                 </div>
             </div>
         </div>
@@ -959,9 +938,8 @@
 
         // Articles Slider (Infinite Loop)
         const articlesSlider = document.getElementById('articlesSlider');
-        const sliderDots = document.getElementById('sliderDots');
 
-        if (articlesSlider && sliderDots) {
+        if (articlesSlider) {
             const originalArticles = Array.from(articlesSlider.querySelectorAll('.article-card'));
             const totalArticles = originalArticles.length;
             let currentIndex = 0;
@@ -1011,27 +989,6 @@
                 return 0;
             }
 
-            function updateDots() {
-                const perView = getArticlesPerView();
-                const maxDots = totalArticles - perView + 1;
-
-                // Clear existing dots
-                sliderDots.innerHTML = '';
-
-                // Create dots
-                for (let i = 0; i < maxDots; i++) {
-                    const dot = document.createElement('div');
-                    dot.className = 'slider-dot';
-                    const normalizedIndex = ((currentIndex - totalArticles) % totalArticles + totalArticles) % totalArticles;
-                    if (i === normalizedIndex) dot.classList.add('active');
-                    dot.addEventListener('click', () => {
-                        currentIndex = totalArticles + i;
-                        goToSlide(true);
-                    });
-                    sliderDots.appendChild(dot);
-                }
-            }
-
             function goToSlide(animate = true) {
                 if (isTransitioning) return;
 
@@ -1049,7 +1006,6 @@
                 }
 
                 articlesSlider.style.transform = `translateX(${translateX}px)`;
-                updateDots();
             }
 
             function nextSlide() {
@@ -1092,7 +1048,6 @@
             function initialize() {
                 cloneArticles();
                 goToSlide(false);
-                updateDots();
             }
 
             // Initialize
@@ -1104,7 +1059,6 @@
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(() => {
                     goToSlide(false);
-                    updateDots();
                 }, 250);
             });
 
