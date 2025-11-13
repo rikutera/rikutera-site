@@ -44,11 +44,18 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
+    gap: 12px;
 }
 
 .logo img {
     height: 40px;
     width: auto;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1E3A8A;
 }
 
 .nav-links {
