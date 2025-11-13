@@ -957,15 +957,43 @@
             });
         });
 
-        // Articles Slider
+        // Articles Slider (Infinite Loop)
         const articlesSlider = document.getElementById('articlesSlider');
         const sliderDots = document.getElementById('sliderDots');
-        
+
         if (articlesSlider && sliderDots) {
-            const articles = articlesSlider.querySelectorAll('.article-card');
-            const totalArticles = articles.length;
-            let currentSlide = 0;
+            const originalArticles = Array.from(articlesSlider.querySelectorAll('.article-card'));
+            const totalArticles = originalArticles.length;
+            let currentIndex = 0;
             let autoScrollInterval;
+            let isTransitioning = false;
+
+            // Clone articles for infinite loop
+            function cloneArticles() {
+                // Clear existing content
+                articlesSlider.innerHTML = '';
+
+                // Add clones before (for backward infinite scroll)
+                originalArticles.forEach(article => {
+                    const clone = article.cloneNode(true);
+                    articlesSlider.appendChild(clone);
+                });
+
+                // Add original articles
+                originalArticles.forEach(article => {
+                    const clone = article.cloneNode(true);
+                    articlesSlider.appendChild(clone);
+                });
+
+                // Add clones after (for forward infinite scroll)
+                originalArticles.forEach(article => {
+                    const clone = article.cloneNode(true);
+                    articlesSlider.appendChild(clone);
+                });
+
+                // Start at the middle set (original articles)
+                currentIndex = totalArticles;
+            }
 
             // Get articles per view based on window width
             function getArticlesPerView() {
@@ -976,84 +1004,78 @@
             }
 
             function getCardWidth() {
-                if (articles.length > 0) {
-                    return articles[0].offsetWidth + 24; // card width + gap
+                const cards = articlesSlider.querySelectorAll('.article-card');
+                if (cards.length > 0) {
+                    return cards[0].offsetWidth + 24; // card width + gap
                 }
                 return 0;
             }
 
-            function getMaxSlide() {
-                return totalArticles - getArticlesPerView();
-            }
+            function updateDots() {
+                const perView = getArticlesPerView();
+                const maxDots = totalArticles - perView + 1;
 
-            function updateSlider() {
-                const maxSlide = getMaxSlide();
-                
                 // Clear existing dots
                 sliderDots.innerHTML = '';
-                
+
                 // Create dots
-                for (let i = 0; i <= maxSlide; i++) {
+                for (let i = 0; i < maxDots; i++) {
                     const dot = document.createElement('div');
                     dot.className = 'slider-dot';
-                    if (i === currentSlide) dot.classList.add('active');
+                    const normalizedIndex = ((currentIndex - totalArticles) % totalArticles + totalArticles) % totalArticles;
+                    if (i === normalizedIndex) dot.classList.add('active');
                     dot.addEventListener('click', () => {
-                        currentSlide = i;
+                        currentIndex = totalArticles + i;
                         goToSlide(true);
                     });
                     sliderDots.appendChild(dot);
                 }
-                
-                // Reset if out of range
-                if (currentSlide > maxSlide) {
-                    currentSlide = 0;
-                }
-                
-                goToSlide(false);
             }
 
             function goToSlide(animate = true) {
+                if (isTransitioning) return;
+
                 const cardWidth = getCardWidth();
-                const translateX = -(currentSlide * cardWidth);
-                
+                const translateX = -(currentIndex * cardWidth);
+
                 if (animate) {
                     articlesSlider.style.transition = 'transform 0.5s ease';
+                    isTransitioning = true;
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, 500);
                 } else {
                     articlesSlider.style.transition = 'none';
                 }
-                
+
                 articlesSlider.style.transform = `translateX(${translateX}px)`;
-                
-                // Update dots
-                document.querySelectorAll('.slider-dot').forEach((dot, index) => {
-                    if (index === currentSlide) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
+                updateDots();
             }
 
             function nextSlide() {
-                const maxSlide = getMaxSlide();
-                
-                if (currentSlide >= maxSlide) {
-                    // Reset to start instantly
-                    currentSlide = 0;
-                    goToSlide(false);
-                    
-                    // Force a reflow
-                    void articlesSlider.offsetWidth;
-                    
-                    // Then animate to slide 1
-                    setTimeout(() => {
-                        currentSlide = 1;
-                        goToSlide(true);
-                    }, 50);
-                } else {
-                    currentSlide++;
-                    goToSlide(true);
-                }
+                currentIndex++;
+                goToSlide(true);
+
+                // Check if we need to reset position (seamless loop)
+                setTimeout(() => {
+                    if (currentIndex >= totalArticles * 2) {
+                        currentIndex = totalArticles;
+                        goToSlide(false);
+                    }
+                }, 500);
+            }
+
+            function prevSlide() {
+                currentIndex--;
+                goToSlide(true);
+
+                // Check if we need to reset position (seamless loop)
+                setTimeout(() => {
+                    if (currentIndex < totalArticles) {
+                        currentIndex = totalArticles * 2 - 1;
+                        goToSlide(false);
+                    }
+                }, 500);
             }
 
             function startAutoScroll() {
@@ -1067,15 +1089,22 @@
                 }
             }
 
+            function initialize() {
+                cloneArticles();
+                goToSlide(false);
+                updateDots();
+            }
+
             // Initialize
-            updateSlider();
+            initialize();
 
             // Update on window resize
             let resizeTimeout;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(() => {
-                    updateSlider();
+                    goToSlide(false);
+                    updateDots();
                 }, 250);
             });
 
