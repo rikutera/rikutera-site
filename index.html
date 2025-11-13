@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リクテラ | AI × 人間 × コミュニティで、就活の悩みを解決</title>
+    <meta name="description" content="自分の強みが見つからない学生のための就活プラットフォーム。AI分析、キャリアコンサル、コミュニティサポートで内定まで伴走します。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #0F172A;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Navigation */
+        .header-nav {
+            background: #FFFFFF;
+            padding: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1E3A8A;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #0F172A;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-cta {
+            background: #1E3A8A;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-alt {
+            background: #F9FAFB;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+            color: #1E3A8A;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 64px;
+            color: #64748B;
+        }
+
+        /* Section 1: First View */
+        .first-view {
+            background: 
+                linear-gradient(rgba(30, 58, 138, 0.75), rgba(91, 33, 182, 0.65)),
+                url('/img/fv.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 120px 20px;
+        }
+
+        .first-view-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .first-view-content .subtext {
+            font-size: 20px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #FF6B35;
+            color: white;
+            padding: 20px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+            margin-bottom: 24px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .first-view-note {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 16px;
+        }
+
+        /* Section 2: Article Hub Navigation */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .category-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .category-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .category-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1E3A8A;
+        }
+
+        .category-desc {
+            font-size: 14px;
+            color: #64748B;
+        }
+
+        .btn-view-all {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            background: #1E3A8A;
+            color: white;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Latest Articles Slider */
+        .articles-section-full {
+            width: 100%;
+            margin-bottom: 80px;
+            padding: 0;
+        }
+
+        .articles-section {
+            margin-bottom: 80px;
+        }
+
+        .articles-slider-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 48px;
+            width: 100%;
+            padding: 0 max(20px, calc((100vw - 1200px) / 2));
+        }
+
+        .articles-slider {
+            display: flex;
+            gap: 24px;
+            transition: transform 0.5s ease;
+            flex-wrap: nowrap;
+        }
+
+        .article-card {
+            flex: 0 0 calc((min(1200px, 100vw - 40px) - 72px) / 4);
+            max-width: calc((min(1200px, 100vw - 40px) - 72px) / 4);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 180px;
+            background: #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            font-size: 14px;
+        }
+
+        .article-content {
+            padding: 20px;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: #FBBF24;
+            color: #0F172A;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .article-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .article-excerpt {
+            font-size: 14px;
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .article-date {
+            font-size: 12px;
+            color: #9CA3AF;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #CBD5E1;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .slider-dot.active {
+            background: #1E3A8A;
+        }
+
+        @media (max-width: 1240px) {
+            .article-card {
+                flex: 0 0 calc((100vw - 40px - 72px) / 4);
+                max-width: calc((100vw - 40px - 72px) / 4);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .article-card {
+                flex: 0 0 calc((100vw - 40px - 48px) / 3);
+                max-width: calc((100vw - 40px - 48px) / 3);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-card {
+                flex: 0 0 calc((100vw - 40px - 24px) / 2);
+                max-width: calc((100vw - 40px - 24px) / 2);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-card {
+                flex: 0 0 calc(100vw - 40px);
+                max-width: calc(100vw - 40px);
+            }
+            
+            .articles-slider {
+                gap: 0;
+            }
+        }
+
+        /* Section 3: Differentiation Points */
+        .diff-point {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .diff-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .diff-point.reverse {
+            direction: rtl;
+        }
+
+        .diff-point.reverse > * {
+            direction: ltr;
+        }
+
+        .diff-text h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #1E3A8A;
+        }
+
+        .diff-text p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .diff-image {
+            background: #E5E7EB;
+            height: 400px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            font-size: 18px;
+        }
+
+        /* Section 4: Service Features */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .service-number {
+            display: inline-block;
+            background: #FBBF24;
+            color: #0F172A;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .service-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1E3A8A;
+        }
+
+        .service-desc {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        /* Section 5: Use Case Examples */
+        .usecase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .usecase:last-child {
+            margin-bottom: 0;
+        }
+
+        .usecase.reverse {
+            direction: rtl;
+        }
+
+        .usecase.reverse > * {
+            direction: ltr;
+        }
+
+        .usecase-text .student-quote {
+            font-size: 24px;
+            font-weight: 700;
+            color: #5B21B6;
+            margin-bottom: 24px;
+        }
+
+        .usecase-text p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .usecase-image {
+            background: #E5E7EB;
+            height: 350px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            font-size: 18px;
+        }
+
+        /* Section 6: Testimonials */
+        .testimonial-slider {
+            overflow-x: auto;
+            display: flex;
+            gap: 32px;
+            padding-bottom: 24px;
+        }
+
+        .testimonial-card {
+            min-width: 350px;
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-content {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            color: #475569;
+        }
+
+        .testimonial-info {
+            border-top: 1px solid #E5E7EB;
+            padding-top: 16px;
+        }
+
+        .testimonial-dept {
+            font-size: 14px;
+            color: #64748B;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-company {
+            font-size: 14px;
+            color: #1E3A8A;
+            font-weight: 700;
+        }
+
+        /* Section 7: Reason Cards */
+        .reason-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .reason-grid .reason-card:nth-child(4),
+        .reason-grid .reason-card:nth-child(5) {
+            grid-column: span 1;
+        }
+
+        .reason-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .reason-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1E3A8A;
+        }
+
+        .reason-desc {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        /* Section 8: Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 48px 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: #64748B;
+        }
+
+        /* Section 9 & 10: Company Info */
+        .company-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .company-text h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1E3A8A;
+        }
+
+        .company-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .highlight-box {
+            background: #FFF7ED;
+            border-left: 4px solid #FBBF24;
+            padding: 24px;
+            margin-top: 32px;
+            border-radius: 8px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: #92400E;
+        }
+
+        .company-image {
+            background: #E5E7EB;
+            height: 400px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            font-size: 18px;
+        }
+
+        /* Section 11: FAQ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .faq-question {
+            padding: 24px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 700;
+            color: #1E3A8A;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: #F9FAFB;
+        }
+
+        .faq-answer {
+            padding: 0 24px 24px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #475569;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Section 12: Footer */
+        footer {
+            background: #1E3A8A;
+            color: white;
+            padding: 80px 0 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-desc {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #CBD5E1;
+        }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #CBD5E1;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #CBD5E1;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-nav .container {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .first-view-content h1 {
+                font-size: 32px;
+            }
+
+            .first-view-content .subtext {
+                font-size: 16px;
+            }
+
+            .cta-button {
+                font-size: 16px;
+                padding: 16px 32px;
+            }
+
+            .category-grid,
+            .service-grid,
+            .reason-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .diff-point,
+            .usecase,
+            .company-info {
+                grid-template-columns: 1fr;
+            }
+
+            .diff-point.reverse,
+            .usecase.reverse {
+                direction: ltr;
+            }
+
+            .testimonial-card {
+                min-width: 300px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <nav class="header-nav">
+        <div class="container">
+            <div class="logo">リクテラ</div>
+            <ul class="nav-links">
+                <li><a href="#articles">記事</a></li>
+                <li><a href="#about">会社概要</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="/lp/" class="nav-cta">無料診断を受ける</a>
+        </div>
+    </nav>
+
+    <!-- Section 1: First View -->
+    <section class="first-view">
+        <div class="first-view-content">
+            <h1>就活の経験をシェアするだけで<br>ES添削も面接対策も、ぜんぶ無料</h1>
+            <p class="subtext">選考体験やスカウトメッセージをシェアするだけ。月5件でOK</p>
+            <a href="#register" class="cta-button">情報をシェアして、無料で就活サポートを受ける</a>
+            <p class="first-view-note">登録30秒 | クレジットカード不要 | いつでも退会OK</p>
+        </div>
+    </section>
+
+    <!-- Section 2: Article Hub Navigation -->
+    <section id="articles">
+        <div class="container">
+            <h2 class="section-title">就活のお悩み、解決します</h2>
+            <p class="section-subtitle">あなたに合ったコンテンツを見つけてください</p>
+        </div>
+        
+        <!-- Latest Articles Section -->
+        <div class="articles-section-full">
+            <div class="container">
+                <h3 style="font-size: 28px; font-weight: 700; color: #1E3A8A; margin-bottom: 32px; text-align: center;">最新記事</h3>
+            </div>
+            <div class="articles-slider-container">
+                <div class="articles-slider" id="articlesSlider">
+                        <!-- Article 1 -->
+                        <div class="article-card">
+                            <div class="article-image">記事画像</div>
+                            <div class="article-content">
+                                <span class="article-category">強みの見つけ方</span>
+                                <h4 class="article-title">自己分析で見えてくる、あなたの本当の強みとは？</h4>
+                                <p class="article-excerpt">多くの就活生が悩む「自分の強み」。実は日常の経験の中に隠れています...</p>
+                                <p class="article-date">2025.10.15</p>
+                            </div>
+                        </div>
+                        <!-- Article 2 -->
+                        <div class="article-card">
+                            <div class="article-image">記事画像</div>
+                            <div class="article-content">
+                                <span class="article-category">ES対策</span>
+                                <h4 class="article-title">採用担当者が教える、通過率を上げるES作成のコツ</h4>
+                                <p class="article-excerpt">エントリーシートで差をつけるためには、構成と言葉選びが重要です...</p>
+                                <p class="article-date">2025.10.12</p>
+                            </div>
+                        </div>
+                        <!-- Article 3 -->
+                        <div class="article-card">
+                            <div class="article-image">記事画像</div>
+                            <div class="article-content">
+                                <span class="article-category">面接対策</span>
+                                <h4 class="article-title">面接で緊張しないための3つの準備テクニック</h4>
+                                <p class="article-excerpt">面接の緊張を和らげるには、事前準備が鍵。具体的な方法を解説します...</p>
+                                <p class="article-date">2025.10.10</p>
+                            </div>
+                        </div>
+                        <!-- Article 4 -->
+                        <div class="article-card">
+                            <div class="article-image">記事画像</div>
+                            <div class="article-content">
+                                <span class="article-category">業界研究</span>
+                                <h4 class="article-title">2025年注目の成長業界トップ5を徹底分析</h4>
+                                <p class="article-excerpt">AIやDX推進で注目される業界の最新動向と求められる人材像とは...</p>
+                                <p class="article-date">2025.10.08</p>
+                            </div>
+                        </div>
+                        <!-- Article 5 -->
+                        <div class="article-card">
+                            <div class="article-image">記事画像</div>
+                            <div class="article-content">
+                                <span class="article-category">自己分析</span>
+                                <h4 class="article-title">価値観マップで見つける、あなたが大切にしているもの</h4>
+                                <p class="article-excerpt">企業選びの軸を明確にするための価値観の整理方法を紹介します...</p>
+                                <p class="article-date">2025.10.05</p>
+                            </div>
+                        </div>
+                        <!-- Article 6 -->
+                        <div class="article-card">
+                            <div class="article-image">記事画像</div>
+                            <div class="article-content">
+                                <span class="article-category">内定者事例</span>
+                                <h4 class="article-title">【総合商社内定】留学経験をどう活かしたか</h4>
+                                <p class="article-excerpt">実際の内定者が語る、留学経験を効果的にアピールする方法とは...</p>
+                                <p class="article-date">2025.10.03</p>
+                            </div>
+                        </div>
+                        <!-- Article 7 -->
+                        <div class="article-card">
+                            <div class="article-image">記事画像</div>
+                            <div class="article-content">
+                                <span class="article-category">ES対策</span>
+                                <h4 class="article-title">志望動機を書く前に知っておくべき3つのポイント</h4>
+                                <p class="article-excerpt">説得力のある志望動機には型があります。基本構成を解説...</p>
+                                <p class="article-date">2025.10.01</p>
+                            </div>
+                        </div>
+                        <!-- Article 8 -->
+                        <div class="article-card">
+                            <div class="article-image">記事画像</div>
+                            <div class="article-content">
+                                <span class="article-category">面接対策</span>
+                                <h4 class="article-title">グループディスカッションで評価される振る舞い方</h4>
+                                <p class="article-excerpt">GDでは発言量より質が重要。協調性と論理性を示す方法とは...</p>
+                                <p class="article-date">2025.09.28</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-dots" id="sliderDots"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h3 style="font-size: 28px; font-weight: 700; color: #1E3A8A; margin-bottom: 32px; text-align: center;">カテゴリから探す</h3>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">🔍</div>
+                    <h3 class="category-title">強みの見つけ方</h3>
+                    <p class="category-desc">自分の強みを発見するための実践的な方法をご紹介</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">✍️</div>
+                    <h3 class="category-title">ES対策</h3>
+                    <p class="category-desc">エントリーシートの書き方とポイントを詳しく解説</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎤</div>
+                    <h3 class="category-title">面接対策</h3>
+                    <p class="category-desc">面接で自信を持って話せるようになるコツ</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">📊</div>
+                    <h3 class="category-title">自己分析</h3>
+                    <p class="category-desc">深い自己理解のためのフレームワークを提供</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🏢</div>
+                    <h3 class="category-title">業界研究</h3>
+                    <p class="category-desc">各業界の特徴と最新トレンドを網羅</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">⭐</div>
+                    <h3 class="category-title">内定者事例</h3>
+                    <p class="category-desc">先輩たちのリアルな就活体験談</p>
+                </div>
+            </div>
+            <a href="/articles/" class="btn-view-all">すべての記事を見る</a>
+        </div>
+    </section>
+
+    <!-- Section 3: Differentiation Points -->
+    <section class="section-alt">
+        <div class="container">
+            <h2 class="section-title">リクテラが選ばれる3つの理由</h2>
+            
+            <div class="diff-point">
+                <div class="diff-text">
+                    <h3>AI 分析 × キャリアコンサルで、<br>あなただけの道を見つける。</h3>
+                    <p>多くのサービスは、記事の情報提供か、プロの面談サポートのどちらか一方です。リクテラは、My Story Room で AI があなたの経験を分析し、隠れた強みを「強みマップ」として可視化。その分析をもとに、国家資格キャリアコンサルタントが1対1で最適な助言を行います。AI と人の力を組み合わせた、個別対応を大規模に実現。これは、リクテラだけです。</p>
+                </div>
+                <div class="diff-image">
+                    ダミー画像<br>AI分析イメージ
+                </div>
+            </div>
+
+            <div class="diff-point reverse">
+                <div class="diff-text">
+                    <h3>仲間との対話から、<br>自分の良さが見えてくる。</h3>
+                    <p>一般的な就活支援は「プロからのアドバイス」が中心。リクテラは違います。就活ラボで、同じ悩みや志向の仲間と少人数チームで語り合い、互いの視点から「自分の良さ」を発見し合う。Growth Log で小さな成長も承認される。仲間とプロが、両方からあなたをサポートする。この「ピアサポート × プロ伴走」は、業界では珍しい仕組みです。</p>
+                </div>
+                <div class="diff-image">
+                    ダミー画像<br>コミュニティイメージ
+                </div>
+            </div>
+
+            <div class="diff-point">
+                <div class="diff-text">
+                    <h3>就活は通過点。<br>人生全体のキャリア支援。</h3>
+                    <p>多くの就活支援は、内定で終わり。リクテラは、Story Library で先輩の「リアル」を学び、Step Up Program で内定後・社会人初期まで継続伴走します。AI と人が連携しながら、あなたのキャリア人生全体をサポートする。「就活の先」まで見据えた支援は、リクテラの確固たる違いです。</p>
+                </div>
+                <div class="diff-image">
+                    ダミー画像<br>長期支援イメージ
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Service Features -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">6つのサービス機能</h2>
+            <p class="section-subtitle">あなたの就活を多角的にサポート</p>
+            <div class="service-grid">
+                <div class="service-card">
+                    <span class="service-number">①</span>
+                    <h3 class="service-title">My Story Room<br><small>（AI自己理解ラボ）</small></h3>
+                    <p class="service-desc">あなたの経験を AI が分析し、隠れた強みを「強みマップ」として可視化。似た価値観の先輩や企業もレコメンドされるので、自己理解と企業選びが同時に進みます。</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">②</span>
+                    <h3 class="service-title">就活ラボ<br><small>（コミュニティ × ピアサポート）</small></h3>
+                    <p class="service-desc">同じ悩みや志向の仲間と少人数チームで語り合います。互いの視点から「自分の良さ」を発見し合う。プロからのアドバイスだけでなく、仲間からの気づきが生まれます。</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">③</span>
+                    <h3 class="service-title">Career Support Room<br><small>（キャリアコンサル伴走）</small></h3>
+                    <p class="service-desc">国家資格キャリアコンサルタントが 1 対 1 で伴走。AI 分析やコミュニティでの履歴をもとに、あなたに最適な助言を行います。個別対応だから、個人の状況に寄り添ったサポートが実現します。</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">④</span>
+                    <h3 class="service-title">Growth Log<br><small>（成長ログ）</small></h3>
+                    <p class="service-desc">小さな行動や成長をログ化し、仲間やプロから承認を得られます。自己肯定感を高める文化が設計されているので、「強みがない」という思い込みが、少しずつ変わっていきます。</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">⑤</span>
+                    <h3 class="service-title">Story Library<br><small>（先輩・企業のリアル）</small></h3>
+                    <p class="service-desc">先輩の就活体験談や企業の「中の人の声」をストーリー形式で掲載。情報提供ではなく、共感から学べるから、あなたの迷いや不安が、解消されやすくなります。</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">⑥</span>
+                    <h3 class="service-title">Step Up Program<br><small>（成長支援プログラム）</small></h3>
+                    <p class="service-desc">就活準備から内定後・社会人初期までの継続的キャリア支援を行います。AI と人が連携しながら伴走するから、人生全体のキャリアを見据えた判断ができます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Use Case Examples -->
+    <section class="section-alt">
+        <div class="container">
+            <h2 class="section-title">登録後の活用例</h2>
+            <p class="section-subtitle">3つの軸で、あなたをサポート</p>
+
+            <div class="usecase">
+                <div class="usecase-text">
+                    <p class="student-quote">「あ、私だけじゃないんだ。」</p>
+                    <p>就活ラボで、同じ悩みを抱える仲間と少人数チームで語り合います。「強みがない」と思っていたことが、仲間の視点では「実はこんな力だ」と気づかされる。孤独な就活が、支え合える仲間との時間に変わります。</p>
+                </div>
+                <div class="usecase-image">
+                    ダミー画像<br>コミュニティ軸
+                </div>
+            </div>
+
+            <div class="usecase reverse">
+                <div class="usecase-text">
+                    <p class="student-quote">「プロとの対話で、自分が見えてきた。」</p>
+                    <p>キャリアコンサルタントとの 1 対 1 面談で、あなたの経験を深掘り。最初は「話すことがない」と思っていても、対話の中で、自分が気づかなかった強みや価値観が言語化されていきます。個別対応だから、あなたの状況に寄り添ったサポートが実現します。</p>
+                </div>
+                <div class="usecase-image">
+                    ダミー画像<br>1対1軸
+                </div>
+            </div>
+
+            <div class="usecase">
+                <div class="usecase-text">
+                    <p class="student-quote">「データで見ると、自分ってこういう人なんだ。」</p>
+                    <p>My Story Room の AI 分析で、あなたの経験から隠れた強みが可視化されます。客観的な「強みマップ」を見ることで、自分の価値が実感できる。さらに、似た価値観の先輩や企業も自動でレコメンドされ、企業選びの迷いも減ります。</p>
+                </div>
+                <div class="usecase-image">
+                    ダミー画像<br>AI分析軸
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Testimonials -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">学生の声</h2>
+            <p class="section-subtitle">実際に利用した先輩たちの体験談</p>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <p class="testimonial-content">最初は自分の強みが全く分からず、ESを書くのも苦痛でした。でも、My Story Room のAI分析で客観的に自分の経験を見ることができ、就活ラボの仲間からも「それってすごい強みだよ」と言ってもらえて、少しずつ自信が持てるようになりました。キャリアコンサルタントの方との面談では、自分でも気づかなかった価値観が言語化されて、企業選びの軸が明確になりました。</p>
+                    <div class="testimonial-info">
+                        <p class="testimonial-dept">文学部</p>
+                        <p class="testimonial-company">食品メーカー 営業職</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">就活は孤独な戦いだと思っていましたが、リクテラで同じ目標を持つ仲間と出会えたことが大きかったです。週1回の就活ラボでは、互いのESを見せ合ったり、面接練習をしたり。仲間の視点から「こういう表現の方が伝わる」とアドバイスをもらえたことで、選考通過率が上がりました。内定後も、Step Up Program で社会人準備をサポートしてもらえるのが心強いです。</p>
+                    <div class="testimonial-info">
+                        <p class="testimonial-dept">経営学部</p>
+                        <p class="testimonial-company">総合商社 企画職</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">理系の私は、研究活動が忙しく、就活の準備が後回しになっていました。リクテラでは、AI分析で短時間で自己分析ができ、必要な情報をStory Libraryで効率的に学べました。また、キャリアコンサルタントの方が、私の研究内容をしっかり理解してくださり、それを企業にどう伝えるかを一緒に考えてくれました。技術職での内定を複数いただけて、本当に感謝しています。</p>
+                    <div class="testimonial-info">
+                        <p class="testimonial-dept">理工学部</p>
+                        <p class="testimonial-company">IT企業 エンジニア職</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">就活を始めた当初は、どの企業も同じに見えて、志望動機が全く書けませんでした。リクテラのAI分析で自分の価値観が可視化され、それに合う企業をレコメンドしてもらえたことで、企業選びの軸ができました。Story Libraryで先輩の体験談を読んで、リアルな企業の雰囲気を知れたのも良かったです。最終的に、自分の価値観に合った企業から内定をいただけました。</p>
+                    <div class="testimonial-info">
+                        <p class="testimonial-dept">社会学部</p>
+                        <p class="testimonial-company">広告代理店 営業企画職</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">面接が苦手で、いつも緊張して本来の自分を出せませんでした。就活ラボで仲間と面接練習を繰り返し、Growth Logで小さな成長を記録していくうちに、少しずつ自信がついてきました。キャリアコンサルタントの方からは、面接での話し方や表情のフィードバックをもらい、それを実践することで、最終面接まで進めるようになりました。リクテラのサポートがなければ、内定は取れなかったと思います。</p>
+                    <div class="testimonial-info">
+                        <p class="testimonial-dept">法学部</p>
+                        <p class="testimonial-company">金融（銀行）営業職</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Reasons to Start Now -->
+    <section class="section-alt">
+        <div class="container">
+            <h2 class="section-title">今始めるべき5つの理由</h2>
+            <p class="section-subtitle">就活準備は、早ければ早いほど有利です</p>
+            <div class="reason-grid">
+                <div class="reason-card">
+                    <h3 class="reason-title">① 自分で迷う前から始める</h3>
+                    <p class="reason-desc">就活で一番の時間ロスは、「何をすればいいかわからない」という迷いの中での試行錯誤です。プロやコミュニティのサポートを受けることで、その迷いの時間を短縮でき、本来やるべき準備に時間を使えます。</p>
+                </div>
+                <div class="reason-card">
+                    <h3 class="reason-title">② 就活のスタートは年々早くなってる</h3>
+                    <p class="reason-desc">数年前は 4 月からの本選考が中心でしたが、今は 3 月の説明会、早期選考は冬から始まっています。「まだ大丈夫」と思っていると、あっという間に重要な選考機会を逃します。今から準備を始めることが、選択肢を広げる唯一の方法です。</p>
+                </div>
+                <div class="reason-card">
+                    <h3 class="reason-title">③ 売り手産業で、ライバルが多い</h3>
+                    <p class="reason-desc">景気動向によって変わりますが、売り手市場であればあるほど、企業は「どの学生を選ぶか」をより厳選するようになります。限られた枠の中で選ばれるには、事前準備と戦略が必要不可欠です。</p>
+                </div>
+                <div class="reason-card">
+                    <h3 class="reason-title">④ プロフィールを書けない学生が増えている</h3>
+                    <p class="reason-desc">「自分の強みがわからない」「何をアピールしたらいいかわからない」という学生は、年々増えています。その中で、早期から自分を理解し言語化できた学生が、圧倒的に有利になります。</p>
+                </div>
+                <div class="reason-card">
+                    <h3 class="reason-title">⑤ 反面、学業外の活動をしている学生も増えている</h3>
+                    <p class="reason-desc">インターンシップ、起業、ボランティア、留学など、就活に有利な経験を積む学生も確実に増えています。同じスタートラインに立たないために、今から動く必要があります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Statistics -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">リクテラの実績</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">〇〇万人</div>
+                    <div class="stat-label">累計利用者数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">〇〇万人</div>
+                    <div class="stat-label">内定者数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">〇〇%</div>
+                    <div class="stat-label">内定率</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 11: FAQ -->
+    <section id="faq" class="section-alt">
+        <div class="container">
+            <h2 class="section-title">よくある質問</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        サービスは本当に無料ですか?
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        はい、基本的なサービスは完全無料でご利用いただけます。一部のプレミアム機能については有料プランもご用意していますが、無料プランでも十分に就活準備を進めることができます。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        登録にはどのくらい時間がかかりますか?
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        登録自体は3分程度で完了します。その後、AI分析のための簡単な質問に答えていただくと、より精度の高いサポートを受けることができます。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        いつから利用を始めるのが良いですか?
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        早ければ早いほど効果的です。大学3年生の春から始める方が多いですが、1-2年生からの利用も可能です。自己理解を深める時間が長いほど、より納得のいく就活ができます。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        個人情報の取り扱いは安全ですか?
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        はい、個人情報保護法に基づき、厳重に管理しています。第三者への提供は本人の同意なく行うことはありません。詳しくはプライバシーポリシーをご確認ください。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        キャリアコンサルタントとの面談はどのくらいの頻度ですか?
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        月に1-2回を推奨していますが、個人の状況に応じて調整可能です。選考が集中する時期には、より頻繁に面談を設定することもできます。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 12: Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">リクテラ</div>
+                    <p class="footer-desc">採用活動をとおして、双方にとって「出会えてよかった」という喜びを生み出します。学生と企業、人と人とをつなぐプラットフォームです。</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">コンテンツ</h4>
+                    <ul class="footer-links">
+                        <li><a href="/articles/">記事一覧</a></li>
+                        <li><a href="/articles/category/">カテゴリ</a></li>
+                        <li><a href="/articles/success-stories/">内定者ES</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">サポート</h4>
+                    <ul class="footer-links">
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="/company/">運営会社</a></li>
+                        <li><a href="/privacy/">プライバシーポリシー</a></li>
+                        <li><a href="/terms/">利用規約</a></li>
+                        <li><a href="/contact/">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">SNS</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">𝕏</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 リクテラ (Rikutera). All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Articles Slider
+        const articlesSlider = document.getElementById('articlesSlider');
+        const sliderDots = document.getElementById('sliderDots');
+        
+        if (articlesSlider && sliderDots) {
+            const articles = articlesSlider.querySelectorAll('.article-card');
+            const totalArticles = articles.length;
+            let currentSlide = 0;
+            let autoScrollInterval;
+
+            // Get articles per view based on window width
+            function getArticlesPerView() {
+                if (window.innerWidth <= 480) return 1;
+                if (window.innerWidth <= 768) return 2;
+                if (window.innerWidth <= 1024) return 3;
+                return 4;
+            }
+
+            function getCardWidth() {
+                if (articles.length > 0) {
+                    return articles[0].offsetWidth + 24; // card width + gap
+                }
+                return 0;
+            }
+
+            function getMaxSlide() {
+                return totalArticles - getArticlesPerView();
+            }
+
+            function updateSlider() {
+                const maxSlide = getMaxSlide();
+                
+                // Clear existing dots
+                sliderDots.innerHTML = '';
+                
+                // Create dots
+                for (let i = 0; i <= maxSlide; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'slider-dot';
+                    if (i === currentSlide) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        currentSlide = i;
+                        goToSlide(true);
+                    });
+                    sliderDots.appendChild(dot);
+                }
+                
+                // Reset if out of range
+                if (currentSlide > maxSlide) {
+                    currentSlide = 0;
+                }
+                
+                goToSlide(false);
+            }
+
+            function goToSlide(animate = true) {
+                const cardWidth = getCardWidth();
+                const translateX = -(currentSlide * cardWidth);
+                
+                if (animate) {
+                    articlesSlider.style.transition = 'transform 0.5s ease';
+                } else {
+                    articlesSlider.style.transition = 'none';
+                }
+                
+                articlesSlider.style.transform = `translateX(${translateX}px)`;
+                
+                // Update dots
+                document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                const maxSlide = getMaxSlide();
+                
+                if (currentSlide >= maxSlide) {
+                    // Reset to start instantly
+                    currentSlide = 0;
+                    goToSlide(false);
+                    
+                    // Force a reflow
+                    void articlesSlider.offsetWidth;
+                    
+                    // Then animate to slide 1
+                    setTimeout(() => {
+                        currentSlide = 1;
+                        goToSlide(true);
+                    }, 50);
+                } else {
+                    currentSlide++;
+                    goToSlide(true);
+                }
+            }
+
+            function startAutoScroll() {
+                stopAutoScroll();
+                autoScrollInterval = setInterval(nextSlide, 3000);
+            }
+
+            function stopAutoScroll() {
+                if (autoScrollInterval) {
+                    clearInterval(autoScrollInterval);
+                }
+            }
+
+            // Initialize
+            updateSlider();
+
+            // Update on window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    updateSlider();
+                }, 250);
+            });
+
+            // Start auto scroll
+            startAutoScroll();
+
+            // Pause on hover
+            articlesSlider.addEventListener('mouseenter', stopAutoScroll);
+            articlesSlider.addEventListener('mouseleave', startAutoScroll);
+        }
+    </script>
+</body>
+</html>

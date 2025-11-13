@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# 一時ファイル
+*.tmp
+*.log
+*~
+
+# node_modules（今後使う場合）
+node_modules/
