@@ -41,9 +41,14 @@ body {
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: #1E3A8A;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
 }
 
 .nav-links {
@@ -433,9 +438,12 @@ footer {
 }
 
 .footer-logo {
-    font-size: 24px;
-    font-weight: 700;
     margin-bottom: 16px;
+}
+
+.footer-logo img {
+    height: 32px;
+    width: auto;
 }
 
 .footer-desc {
