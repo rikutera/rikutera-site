@@ -9,144 +9,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/common.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* index.html specific styles */
 
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            color: #0F172A;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Navigation */
+        /* Header Navigation - index specific */
         .header-nav {
-            background: #FFFFFF;
             padding: 20px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1E3A8A;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #0F172A;
-            text-decoration: none;
-            font-size: 16px;
         }
 
         .nav-cta {
             background: #1E3A8A;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
         }
 
-        /* Section Styles */
+        /* Section Styles - index specific */
         section {
             padding: 100px 0;
         }
 
-        .section-alt {
-            background: #F9FAFB;
-        }
-
         .section-title {
-            font-size: 42px;
-            font-weight: 700;
-            text-align: center;
             margin-bottom: 48px;
-            color: #1E3A8A;
         }
 
         .section-subtitle {
-            text-align: center;
-            font-size: 18px;
             margin-bottom: 64px;
-            color: #64748B;
         }
 
-        /* Section 1: First View */
+        /* Section 1: First View - index specific */
         .first-view {
-            background: 
+            background:
                 linear-gradient(rgba(30, 58, 138, 0.75), rgba(91, 33, 182, 0.65)),
                 url('/img/fv.jpg');
-            background-size: cover;
-            background-position: center;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
             padding: 120px 20px;
         }
 
-        .first-view-content h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            line-height: 1.4;
-        }
-
-        .first-view-content .subtext {
-            font-size: 20px;
-            margin-bottom: 40px;
-            line-height: 1.8;
-            font-weight: 400;
-        }
-
         .cta-button {
-            display: inline-block;
-            background: #FF6B35;
-            color: white;
-            padding: 20px 48px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
             margin-bottom: 24px;
+            border-radius: 8px;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
         }
 
         .first-view-note {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.9);
             margin-top: 16px;
         }
 
@@ -426,147 +333,45 @@
             color: #475569;
         }
 
-        /* Section 5: Use Case Examples */
-        .usecase {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: center;
-            margin-bottom: 80px;
-        }
-
-        .usecase:last-child {
-            margin-bottom: 0;
-        }
-
-        .usecase.reverse {
-            direction: rtl;
-        }
-
-        .usecase.reverse > * {
-            direction: ltr;
-        }
-
-        .usecase-text .student-quote {
-            font-size: 24px;
-            font-weight: 700;
-            color: #5B21B6;
-            margin-bottom: 24px;
-        }
-
+        /* Section 5: Use Case Examples - index specific */
         .usecase-text p {
             font-size: 18px;
-            line-height: 1.8;
         }
 
         .usecase-image {
             background: #E5E7EB;
-            height: 350px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: #9CA3AF;
             font-size: 18px;
         }
 
-        /* Section 6: Testimonials */
-        .testimonial-slider {
-            overflow-x: auto;
-            display: flex;
-            gap: 32px;
-            padding-bottom: 24px;
-        }
-
-        .testimonial-card {
-            min-width: 350px;
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        }
-
+        /* Section 6: Testimonials - index specific */
         .testimonial-content {
             font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 24px;
-            color: #475569;
         }
 
         .testimonial-info {
             border-top: 1px solid #E5E7EB;
-            padding-top: 16px;
-        }
-
-        .testimonial-dept {
-            font-size: 14px;
-            color: #64748B;
-            margin-bottom: 4px;
         }
 
         .testimonial-company {
             font-size: 14px;
-            color: #1E3A8A;
-            font-weight: 700;
         }
 
-        /* Section 7: Reason Cards */
-        .reason-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .reason-grid .reason-card:nth-child(4),
-        .reason-grid .reason-card:nth-child(5) {
-            grid-column: span 1;
-        }
-
-        .reason-card {
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        }
-
+        /* Section 7: Reason Cards - index specific */
         .reason-title {
             font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #1E3A8A;
         }
 
         .reason-desc {
             font-size: 16px;
-            line-height: 1.8;
-            color: #475569;
-        }
-
-        /* Section 8: Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-            text-align: center;
         }
 
         .stat-card {
-            background: white;
-            padding: 48px 32px;
             border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
 
         .stat-number {
-            font-size: 56px;
             font-weight: 700;
-            color: #1E3A8A;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 18px;
-            color: #64748B;
         }
 
         /* Section 9 & 10: Company Info */
@@ -614,143 +419,30 @@
             font-size: 18px;
         }
 
-        /* Section 11: FAQ */
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
+        /* Section 11: FAQ - index specific */
         .faq-item {
-            background: white;
-            margin-bottom: 16px;
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .faq-question {
-            padding: 24px;
-            cursor: pointer;
             font-size: 18px;
-            font-weight: 700;
-            color: #1E3A8A;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-question:hover {
-            background: #F9FAFB;
         }
 
         .faq-answer {
-            padding: 0 24px 24px;
             font-size: 16px;
-            line-height: 1.8;
-            color: #475569;
-            display: none;
         }
 
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        /* Section 12: Footer */
+        /* Section 12: Footer - index specific */
         footer {
-            background: #1E3A8A;
-            color: white;
             padding: 80px 0 32px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-
-        .footer-logo {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .footer-desc {
-            font-size: 14px;
-            line-height: 1.8;
-            color: #CBD5E1;
         }
 
         .footer-title {
             font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
         }
 
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #CBD5E1;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 16px;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-        }
-
-        .social-link:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #CBD5E1;
-            font-size: 14px;
-        }
-
-        /* Responsive Design */
+        /* Responsive Design - index specific */
         @media (max-width: 768px) {
-            .header-nav .container {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
-
-            .first-view-content h1 {
-                font-size: 32px;
-            }
-
             .first-view-content .subtext {
                 font-size: 16px;
             }
@@ -761,9 +453,7 @@
             }
 
             .category-grid,
-            .service-grid,
-            .reason-grid,
-            .stats-grid {
+            .service-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -776,18 +466,6 @@
             .diff-point.reverse,
             .usecase.reverse {
                 direction: ltr;
-            }
-
-            .testimonial-card {
-                min-width: 300px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 32px;
             }
         }
     </style>

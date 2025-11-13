@@ -9,137 +9,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/common.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* landing_page.html specific styles */
 
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            color: #0F172A;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Navigation */
-        .header-nav {
-            background: #FFFFFF;
-            padding: 16px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1E3A8A;
-        }
-
-        .nav-cta {
-            background: #FF6B35;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 80px 0;
-        }
-
-        .section-alt {
-            background: #F9FAFB;
-        }
-
+        /* Section Styles - landing_page specific */
         .section-title {
-            font-size: 42px;
             font-weight: 900;
-            text-align: center;
-            margin-bottom: 16px;
-            color: #1E3A8A;
-            line-height: 1.3;
         }
 
-        .section-subtitle {
-            text-align: center;
-            font-size: 18px;
-            margin-bottom: 48px;
-            color: #64748B;
-        }
-
-        /* Section 1: First View */
+        /* Section 1: First View - landing_page specific */
         .first-view {
             background: linear-gradient(rgba(102, 126, 234, 0.85), rgba(118, 75, 162, 0.85)), url('../img/lp_fv.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 100px 20px;
         }
 
         .first-view-content h1 {
-            font-size: 48px;
             font-weight: 900;
-            margin-bottom: 24px;
-            line-height: 1.4;
         }
 
         .first-view-content .subtext {
             font-size: 22px;
-            margin-bottom: 40px;
-            line-height: 1.6;
         }
 
         .cta-button {
-            display: inline-block;
-            background: #FF6B35;
-            color: white;
-            padding: 20px 48px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
             font-size: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin-bottom: 16px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
-        }
-
-        .first-view-note {
-            font-size: 14px;
-            color: rgba(255,255,255,0.9);
         }
 
         /* Section 2: Problems */
@@ -258,54 +151,7 @@
             color: #475569;
         }
 
-        /* Section 4: Service Functions */
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        }
-
-        .service-number {
-            display: inline-block;
-            background: #FBBF24;
-            color: #0F172A;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-weight: 900;
-            margin-bottom: 16px;
-            font-size: 18px;
-        }
-
-        .service-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1E3A8A;
-        }
-
-        .service-title small {
-            display: block;
-            font-size: 14px;
-            color: #64748B;
-            font-weight: 400;
-            margin-top: 4px;
-        }
-
-        .service-desc {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #475569;
-        }
+        /* Section 4: Service Functions - already in common.css */
 
         /* Section 5: Giver Plan Details */
         .giver-intro {
@@ -370,50 +216,18 @@
             border-radius: 16px;
         }
 
-        /* Section 6: Use Case */
-        .usecase {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: center;
-            margin-bottom: 80px;
-        }
-
-        .usecase:last-child {
-            margin-bottom: 0;
-        }
-
-        .usecase.reverse {
-            direction: rtl;
-        }
-
-        .usecase.reverse > * {
-            direction: ltr;
-        }
-
+        /* Section 6: Use Case - landing_page specific */
         .usecase-text .student-quote {
             font-size: 28px;
-            font-weight: 700;
-            color: #5B21B6;
-            margin-bottom: 24px;
-            line-height: 1.4;
         }
 
         .usecase-text p {
-            font-size: 17px;
             line-height: 1.9;
-            color: #475569;
         }
 
         .usecase-image {
             background: linear-gradient(135deg, #E0E7FF 0%, #DDD6FE 100%);
-            height: 350px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: #7C3AED;
-            font-size: 16px;
             font-weight: 700;
         }
 
@@ -445,46 +259,18 @@
             box-shadow: 0 8px 24px rgba(255,255,255,0.4);
         }
 
-        /* Section 8: Testimonials */
+        /* Section 8: Testimonials - landing_page specific */
         .testimonial-slider {
-            overflow-x: auto;
-            display: flex;
-            gap: 32px;
-            padding-bottom: 24px;
             scroll-snap-type: x mandatory;
         }
 
         .testimonial-card {
             min-width: 380px;
-            background: white;
-            padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
             scroll-snap-align: start;
         }
 
         .testimonial-content {
-            font-size: 15px;
             line-height: 1.9;
-            margin-bottom: 24px;
-            color: #475569;
-        }
-
-        .testimonial-info {
-            border-top: 2px solid #E5E7EB;
-            padding-top: 16px;
-        }
-
-        .testimonial-dept {
-            font-size: 14px;
-            color: #64748B;
-            margin-bottom: 4px;
-        }
-
-        .testimonial-company {
-            font-size: 15px;
-            color: #1E3A8A;
-            font-weight: 700;
         }
 
         /* Section 9: Comparison Table */
@@ -638,124 +424,19 @@
             color: #64748B;
         }
 
-        /* Section 11: Reasons */
-        .reason-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
+        /* Section 11: Reasons - already in common.css */
 
-        .reason-grid .reason-card:nth-child(4),
-        .reason-grid .reason-card:nth-child(5) {
-            grid-column: span 1;
-        }
-
-        .reason-card {
-            background: white;
-            padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        }
-
-        .reason-number {
-            display: inline-block;
-            background: #EEF2FF;
-            color: #1E3A8A;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-weight: 900;
-            margin-bottom: 16px;
-            font-size: 18px;
-        }
-
-        .reason-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1E3A8A;
-            line-height: 1.5;
-        }
-
-        .reason-desc {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #475569;
-        }
-
-        /* Section 12: Stats */
+        /* Section 12: Stats - landing_page specific */
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-            text-align: center;
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        .stat-card {
-            background: white;
-            padding: 48px 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        }
-
         .stat-number {
-            font-size: 56px;
             font-weight: 900;
-            color: #1E3A8A;
-            margin-bottom: 8px;
-            line-height: 1;
         }
 
-        .stat-label {
-            font-size: 18px;
-            color: #64748B;
-        }
-
-        /* Section 13: FAQ */
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: white;
-            margin-bottom: 16px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .faq-question {
-            padding: 24px;
-            cursor: pointer;
-            font-size: 17px;
-            font-weight: 700;
-            color: #1E3A8A;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-
-        .faq-question:hover {
-            background: #F9FAFB;
-        }
-
-        .faq-answer {
-            padding: 0 24px 24px;
-            font-size: 15px;
-            line-height: 1.8;
-            color: #475569;
-            display: none;
-        }
-
-        .faq-item.active .faq-answer {
-            display: block;
-        }
+        /* Section 13: FAQ - already in common.css */
 
         /* Section 14: Mission */
         .mission-content {
@@ -827,133 +508,18 @@
             box-shadow: 0 8px 24px rgba(255,255,255,0.4);
         }
 
-        /* Footer */
-        footer {
-            background: #1E3A8A;
-            color: white;
-            padding: 60px 0 32px;
-        }
+        /* Footer - already in common.css */
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-
-        .footer-logo {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .footer-desc {
-            font-size: 14px;
-            line-height: 1.8;
-            color: #CBD5E1;
-        }
-
-        .footer-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #CBD5E1;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 16px;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-
-        .social-link:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #CBD5E1;
-            font-size: 14px;
-        }
-
-        /* Responsive Design */
+        /* Responsive Design - landing_page specific */
         @media (max-width: 768px) {
-            .section-title {
-                font-size: 32px;
-            }
-
-            .first-view-content h1 {
-                font-size: 32px;
-            }
-
-            .first-view-content .subtext {
-                font-size: 18px;
-            }
-
-            .cta-button {
-                font-size: 18px;
-                padding: 18px 36px;
-            }
-
             .problem-grid,
             .feature-grid,
-            .service-grid,
-            .reason-grid,
-            .stats-grid,
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
 
             .problem-title {
                 min-height: auto;
-            }
-
-            .usecase {
-                grid-template-columns: 1fr;
-            }
-
-            .usecase.reverse {
-                direction: ltr;
-            }
-
-            .testimonial-card {
-                min-width: 300px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
             }
 
             .final-cta h2 {
