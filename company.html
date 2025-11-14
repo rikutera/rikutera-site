@@ -1,7 +1,106 @@
-    <!-- Section 9: Company Mission & Vision -->
-    <section id="about" class="section-alt">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>運営会社 | リクテラ</title>
+    <meta name="description" content="リクテラの運営会社情報、ミッション、ビジョン、会社の成り立ちをご紹介します。">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        /* Company page specific styles */
+        .company-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .company-text h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1E3A8A;
+        }
+
+        .company-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .highlight-box {
+            background: #FFF7ED;
+            border-left: 4px solid #FBBF24;
+            padding: 24px;
+            margin-top: 32px;
+            border-radius: 8px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: #92400E;
+        }
+
+        .company-image {
+            background: #E5E7EB;
+            height: 400px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            font-size: 18px;
+            overflow: hidden;
+        }
+
+        .company-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .company-info {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .company-text h3 {
+                font-size: 24px;
+            }
+
+            .company-text p {
+                font-size: 16px;
+            }
+
+            .company-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <nav class="header-nav">
         <div class="container">
-            <h2 class="section-title">私たちの想い</h2>
+            <a href="/" class="logo">
+                <img src="assets/logo.png" alt="リクテラ">
+                <span class="logo-text">リクテラ</span>
+            </a>
+            <a href="/" class="nav-cta" style="background: #1E3A8A;">トップページへ</a>
+        </div>
+    </nav>
+
+    <!-- Section 1: Company Mission & Vision -->
+    <section class="section-alt" style="padding-top: 80px;">
+        <div class="container">
+            <h1 class="section-title">運営会社</h1>
+            <h2 class="section-title" style="font-size: 32px; margin-top: 64px;">私たちの想い</h2>
             <div class="company-info">
                 <div class="company-text">
                     <h3>ミッション</h3>
@@ -10,13 +109,13 @@
                     <p>採用に関わるすべての人を大切にする。学生も、企業も、紹介会社も、採用担当者も。</p>
                 </div>
                 <div class="company-image">
-                    ダミー画像<br>企業理念イメージ
+                    <img src="https://picsum.photos/seed/company-mission/600/400" alt="企業理念イメージ">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 10: Company History -->
+    <!-- Section 2: Company History -->
     <section>
         <div class="container">
             <h2 class="section-title">会社の成り立ち</h2>
@@ -24,17 +123,61 @@
                 <div class="company-text">
                     <h3>企業名の由来</h3>
                     <p>「Recruit(採用)」と「Tailor(仕立てる)」を組み合わせた造語です。企業ごとに異なる採用課題に寄り添い、その企業らしい採用活動を"仕立てる"存在でありたい、という想いを込めて名付けました。</p>
-                    
+
                     <h3>設立の背景</h3>
                     <p>採用活動は、単なる人材確保にとどまらず、企業と人、人と人とをつなぐ、かけがえのない仕事です。私たちは、そのつながりの中に、双方にとっての「出会えてよかった」と思える喜びがあると信じています。そしてその喜びを生み出すためには、候補者や企業だけでなく、紹介会社や採用担当者、面接官、現場の社員など、採用に関わるすべての人を大切にすることが不可欠です。リクテラは、人と人のつながりを丁寧に紡ぎ、関わるすべての人に温かい価値を届けられる会社でありたいと考え、設立に至りました。</p>
-                    
+
                     <div class="highlight-box">
                         <p><strong>大切にしていること:</strong> 採用に関わるすべての人を大切にすること。その想いで設立に至りました。</p>
                     </div>
                 </div>
                 <div class="company-image">
-                    ダミー画像<br>会社設立イメージ
+                    <img src="https://picsum.photos/seed/company-history/600/400" alt="会社設立イメージ">
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="リクテラ">
+                    </div>
+                    <p class="footer-desc">採用活動をとおして、双方にとって「出会えてよかった」という喜びを生み出します。学生と企業、人と人とをつなぐプラットフォームです。</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">コンテンツ</h4>
+                    <ul class="footer-links">
+                        <li><a href="/articles/">記事一覧</a></li>
+                        <li><a href="/articles/category/">カテゴリ</a></li>
+                        <li><a href="/articles/success-stories/">内定者ES</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">サポート</h4>
+                    <ul class="footer-links">
+                        <li><a href="/#faq">FAQ</a></li>
+                        <li><a href="/company/">運営会社</a></li>
+                        <li><a href="/privacy/">プライバシーポリシー</a></li>
+                        <li><a href="/terms/">利用規約</a></li>
+                        <li><a href="/contact/">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">SNS</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">𝕏</a>
+                        <a href="#" class="social-link">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 リクテラ (Rikutera). All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
