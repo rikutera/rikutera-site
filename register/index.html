@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プラン選択 | リクテラ</title>
+    <meta name="description" content="あなたに合ったプランを選んで、リクテラの就活サポートを始めましょう。">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        body {
+            background: #F9FAFB;
+        }
+
+        .register-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 100px;
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .register-title {
+            font-size: 40px;
+            font-weight: 900;
+            color: #1E3A8A;
+            margin-bottom: 16px;
+        }
+
+        .register-subtitle {
+            font-size: 18px;
+            color: #64748B;
+        }
+
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 64px;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 32px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+
+        .plan-card.featured {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .plan-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FBBF24;
+            color: #78350F;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .plan-name {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            color: #1E3A8A;
+        }
+
+        .plan-card.featured .plan-name {
+            color: white;
+        }
+
+        .plan-price {
+            font-size: 40px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: #1E3A8A;
+        }
+
+        .plan-card.featured .plan-price {
+            color: white;
+        }
+
+        .plan-price-note {
+            font-size: 14px;
+            color: #64748B;
+            margin-bottom: 24px;
+        }
+
+        .plan-card.featured .plan-price-note {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #E5E7EB;
+            font-size: 15px;
+            color: #475569;
+            display: flex;
+            align-items: center;
+        }
+
+        .plan-card.featured .plan-features li {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .plan-features li:before {
+            content: '✓';
+            margin-right: 8px;
+            color: #10B981;
+            font-weight: 700;
+        }
+
+        .plan-card.featured .plan-features li:before {
+            color: white;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-button {
+            display: block;
+            width: 100%;
+            background: #1E3A8A;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .plan-card.featured .plan-button {
+            background: white;
+            color: #10B981;
+        }
+
+        .plan-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .comparison-section {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .comparison-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1E3A8A;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px;
+            text-align: center;
+            border: 1px solid #E5E7EB;
+        }
+
+        .comparison-table th {
+            background: #F9FAFB;
+            font-weight: 700;
+            color: #1E3A8A;
+        }
+
+        .comparison-table td {
+            font-size: 15px;
+        }
+
+        .comparison-table tr:hover {
+            background: #F9FAFB;
+        }
+
+        .comparison-table td:nth-child(2) {
+            background: #FEF3C7;
+            font-weight: 700;
+        }
+
+        @media (max-width: 1024px) {
+            .plan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .plan-card.featured {
+                transform: scale(1);
+            }
+
+            .plan-card.featured:hover {
+                transform: translateY(-8px);
+            }
+
+            .register-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .register-container {
+                padding: 40px 20px 60px;
+            }
+
+            .comparison-section {
+                padding: 24px;
+                overflow-x: auto;
+            }
+
+            .comparison-table {
+                font-size: 14px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <nav class="header-nav">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="../assets/logo.png" alt="リクテラ">
+                <span class="logo-text">リクテラ</span>
+            </a>
+            <a href="/" class="nav-cta" style="background: #64748B;">トップページへ</a>
+        </div>
+    </nav>
+
+    <div class="register-container">
+        <div class="register-header">
+            <h1 class="register-title">プランを選択してください</h1>
+            <p class="register-subtitle">あなたに合ったプランで、就活サポートを始めましょう</p>
+        </div>
+
+        <div class="plan-grid">
+            <!-- Light Plan -->
+            <div class="plan-card">
+                <h2 class="plan-name">ライトプラン</h2>
+                <div class="plan-price">¥350<small style="font-size: 16px;">/月</small></div>
+                <p class="plan-price-note">契約期間: 縛りなし</p>
+                <ul class="plan-features">
+                    <li>面談回数: 1回のみ</li>
+                    <li>AI自己分析</li>
+                    <li>ES添削(基本)</li>
+                    <li>Story Library閲覧</li>
+                </ul>
+                <a href="light/" class="plan-button">このプランで登録</a>
+            </div>
+
+            <!-- Giver Plan (Featured) -->
+            <div class="plan-card featured">
+                <div class="plan-badge">おすすめ</div>
+                <h2 class="plan-name">ギバープラン</h2>
+                <div class="plan-price">無料</div>
+                <p class="plan-price-note">月5件の情報提供</p>
+                <ul class="plan-features">
+                    <li>面談回数: 月2回(貢献度で増)</li>
+                    <li>全サービス利用可能</li>
+                    <li>コミュニティ参加</li>
+                    <li>企業マッチング</li>
+                    <li>Growth Log</li>
+                </ul>
+                <a href="giver/" class="plan-button">無料で始める</a>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="plan-card">
+                <h2 class="plan-name">プレミアムプラン</h2>
+                <div class="plan-price">¥1,980<small style="font-size: 16px;">/月</small></div>
+                <p class="plan-price-note">6ヶ月契約</p>
+                <ul class="plan-features">
+                    <li>面談回数: 月2回+Slack常時</li>
+                    <li>全サービス利用可能</li>
+                    <li>手厚いサポート</li>
+                    <li>優先対応</li>
+                    <li>内定まで徹底伴走</li>
+                </ul>
+                <a href="premium/" class="plan-button">このプランで登録</a>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="comparison-section">
+            <h2 class="comparison-title">プラン比較表</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>ギバープラン</th>
+                        <th>ライトプラン</th>
+                        <th>プレミアムプラン</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>料金</td>
+                        <td>無料(情報提供)</td>
+                        <td>¥350/月</td>
+                        <td>¥1,980/月×6ヶ月</td>
+                    </tr>
+                    <tr>
+                        <td>AI自己分析</td>
+                        <td>○</td>
+                        <td>○</td>
+                        <td>○</td>
+                    </tr>
+                    <tr>
+                        <td>ES添削</td>
+                        <td>○(無制限)</td>
+                        <td>○(基本)</td>
+                        <td>○(無制限)</td>
+                    </tr>
+                    <tr>
+                        <td>面接対策</td>
+                        <td>○</td>
+                        <td>△</td>
+                        <td>○</td>
+                    </tr>
+                    <tr>
+                        <td>コミュニティ</td>
+                        <td>○</td>
+                        <td>×</td>
+                        <td>○</td>
+                    </tr>
+                    <tr>
+                        <td>企業マッチング</td>
+                        <td>○</td>
+                        <td>×</td>
+                        <td>○</td>
+                    </tr>
+                    <tr>
+                        <td>キャリア面談</td>
+                        <td>月2回</td>
+                        <td>1回のみ</td>
+                        <td>月2回+常時相談</td>
+                    </tr>
+                    <tr>
+                        <td>優先対応</td>
+                        <td>×</td>
+                        <td>×</td>
+                        <td>○</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="../assets/logo.png" alt="リクテラ">
+                    </div>
+                    <p class="footer-desc">採用活動をとおして、双方にとって「出会えてよかった」という喜びを生み出します。学生と企業、人と人とをつなぐプラットフォームです。</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">サポート</h4>
+                    <ul class="footer-links">
+                        <li><a href="/#faq">FAQ</a></li>
+                        <li><a href="/company/">運営会社</a></li>
+                        <li><a href="/privacy/">プライバシーポリシー</a></li>
+                        <li><a href="/terms/">利用規約</a></li>
+                        <li><a href="/contact/">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">SNS</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">𝕏</a>
+                        <a href="#" class="social-link">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 リクテラ (Rikutera). All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

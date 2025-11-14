@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ライトプラン登録 | リクテラ</title>
+    <meta name="description" content="月額350円で基本的な就活サポートを受けられるライトプラン。今すぐ登録しましょう。">
+    <link rel="icon" href="../../assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/common.css">
+    <style>
+        body {
+            background: #F9FAFB;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 80px 20px 100px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .form-badge {
+            display: inline-block;
+            background: #1E3A8A;
+            color: white;
+            padding: 8px 24px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .form-title {
+            font-size: 36px;
+            font-weight: 900;
+            color: #1E3A8A;
+            margin-bottom: 16px;
+        }
+
+        .form-subtitle {
+            font-size: 16px;
+            color: #64748B;
+            margin-bottom: 32px;
+        }
+
+        .plan-summary {
+            background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+        }
+
+        .plan-summary h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .plan-summary .price {
+            font-size: 40px;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .plan-summary ul {
+            list-style: none;
+        }
+
+        .plan-summary li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .plan-summary li:before {
+            content: '✓';
+            margin-right: 12px;
+            font-weight: 700;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .form-label .required {
+            color: #DC2626;
+            margin-left: 4px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #1E3A8A;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            font-family: 'Noto Sans JP', sans-serif;
+            background: white;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #1E3A8A;
+        }
+
+        .form-note {
+            font-size: 13px;
+            color: #64748B;
+            margin-top: 4px;
+        }
+
+        .checkbox-group {
+            margin: 32px 0;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            font-size: 14px;
+            color: #475569;
+            cursor: pointer;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin-right: 8px;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        .checkbox-label a {
+            color: #1E3A8A;
+            text-decoration: underline;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: #1E3A8A;
+            color: white;
+            padding: 18px 32px;
+            border-radius: 12px;
+            border: none;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3);
+        }
+
+        .submit-button:disabled {
+            background: #9CA3AF;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: #1E3A8A;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 40px 20px 60px;
+            }
+
+            .form-title {
+                font-size: 28px;
+            }
+
+            .form-card {
+                padding: 24px;
+            }
+
+            .plan-summary {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <nav class="header-nav">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="../../assets/logo.png" alt="リクテラ">
+                <span class="logo-text">リクテラ</span>
+            </a>
+            <a href="/" class="nav-cta" style="background: #64748B;">トップページへ</a>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <a href="../" class="back-link">← プラン選択に戻る</a>
+
+        <div class="form-header">
+            <span class="form-badge">月額350円</span>
+            <h1 class="form-title">ライトプラン 登録</h1>
+            <p class="form-subtitle">基本的な就活サポートを手軽に始める</p>
+        </div>
+
+        <!-- Plan Summary -->
+        <div class="plan-summary">
+            <h2>ライトプランで受けられるサポート</h2>
+            <div class="price">¥350<small style="font-size: 20px;">/月</small></div>
+            <ul>
+                <li>AI自己分析（強みマップ作成）</li>
+                <li>ES添削（基本）</li>
+                <li>Story Library閲覧</li>
+                <li>キャリア面談（1回のみ）</li>
+            </ul>
+            <p style="margin-top: 16px; font-size: 14px; opacity: 0.9;">※ 契約期間の縛りなし。いつでも解約可能です。</p>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="form-card">
+            <form id="registerForm">
+                <!-- Basic Information -->
+                <h3 style="font-size: 20px; font-weight: 700; color: #1E3A8A; margin-bottom: 24px;">基本情報</h3>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        お名前<span class="required">*</span>
+                    </label>
+                    <input type="text" class="form-input" name="name" required placeholder="山田 太郎">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        メールアドレス<span class="required">*</span>
+                    </label>
+                    <input type="email" class="form-input" name="email" required placeholder="example@university.ac.jp">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        パスワード<span class="required">*</span>
+                    </label>
+                    <input type="password" class="form-input" name="password" required placeholder="8文字以上">
+                    <p class="form-note">8文字以上の英数字</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        大学名<span class="required">*</span>
+                    </label>
+                    <input type="text" class="form-input" name="university" required placeholder="○○大学">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        学部・学科<span class="required">*</span>
+                    </label>
+                    <input type="text" class="form-input" name="faculty" required placeholder="経済学部 経済学科">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        卒業予定年月<span class="required">*</span>
+                    </label>
+                    <select class="form-select" name="graduation" required>
+                        <option value="">選択してください</option>
+                        <option value="2025-03">2025年3月</option>
+                        <option value="2026-03">2026年3月</option>
+                        <option value="2027-03">2027年3月</option>
+                        <option value="2028-03">2028年3月</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        電話番号<span class="required">*</span>
+                    </label>
+                    <input type="tel" class="form-input" name="phone" required placeholder="090-1234-5678">
+                </div>
+
+                <!-- Payment Information -->
+                <h3 style="font-size: 20px; font-weight: 700; color: #1E3A8A; margin: 40px 0 24px;">支払い情報</h3>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        クレジットカード番号<span class="required">*</span>
+                    </label>
+                    <input type="text" class="form-input" name="card-number" required placeholder="1234 5678 9012 3456">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="form-group">
+                        <label class="form-label">
+                            有効期限<span class="required">*</span>
+                        </label>
+                        <input type="text" class="form-input" name="card-expiry" required placeholder="MM/YY">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            セキュリティコード<span class="required">*</span>
+                        </label>
+                        <input type="text" class="form-input" name="card-cvc" required placeholder="123">
+                    </div>
+                </div>
+
+                <p class="form-note" style="margin-bottom: 24px;">※ 支払い情報は暗号化され、安全に管理されます</p>
+
+                <!-- Agreement -->
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="agree-terms" required>
+                        <span><a href="/terms/" target="_blank">利用規約</a>と<a href="/privacy/" target="_blank">プライバシーポリシー</a>に同意する</span>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-button">登録して支払いを確定する</button>
+
+                <p style="text-align: center; margin-top: 24px; font-size: 14px; color: #64748B;">
+                    月額350円（税込） | いつでも解約可能
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('登録フォームが送信されました。\n実際のシステムでは、この情報がサーバーに送信され、決済処理とアカウント作成が行われます。');
+        });
+    </script>
+</body>
+</html>
