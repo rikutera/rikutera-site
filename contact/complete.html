@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ完了 | リクテラ</title>
+    <meta name="description" content="お問い合わせありがとうございます。3営業日以内にご返信いたします。">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        body {
+            background: #F9FAFB;
+        }
+
+        .thanks-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 80px 20px 100px;
+            text-align: center;
+        }
+
+        .thanks-card {
+            background: white;
+            border-radius: 16px;
+            padding: 60px 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 32px;
+        }
+
+        .check-icon {
+            width: 80px;
+            height: 80px;
+            background: #10B981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            font-size: 48px;
+            color: white;
+        }
+
+        .thanks-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1E3A8A;
+            margin-bottom: 16px;
+        }
+
+        .thanks-message {
+            font-size: 16px;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .info-box {
+            background: #F0F9FF;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .info-box h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 12px;
+        }
+
+        .info-box p {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background: #1E3A8A;
+            color: white;
+        }
+
+        .button-primary:hover {
+            box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3);
+        }
+
+        .button-secondary {
+            background: white;
+            color: #1E3A8A;
+            border: 2px solid #1E3A8A;
+        }
+
+        .button-secondary:hover {
+            background: #F0F9FF;
+        }
+
+        .next-steps {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .step-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-number {
+            background: #1E3A8A;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-right: 16px;
+        }
+
+        .step-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            font-size: 14px;
+            color: #64748B;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .thanks-container {
+                padding: 40px 20px 60px;
+            }
+
+            .thanks-card {
+                padding: 40px 24px;
+            }
+
+            .thanks-title {
+                font-size: 24px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .next-steps {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <nav class="header-nav">
+        <div class="container">
+            <a href="/rikutera-site" class="logo">
+                <img src="../assets/logo.png" alt="リクテラ">
+                <span class="logo-text">リクテラ</span>
+            </a>
+            <a href="/rikutera-site" class="nav-cta" style="background: #1E3A8A;">トップページへ</a>
+        </div>
+    </nav>
+
+    <div class="thanks-container">
+        <div class="thanks-card">
+            <div class="check-icon">✓</div>
+            <h1 class="thanks-title">お問い合わせを<br>受け付けました</h1>
+            <p class="thanks-message">
+                この度は、リクテラへお問い合わせいただき、誠にありがとうございます。<br>
+                ご入力いただいたメールアドレス宛に、受付完了メールを送信いたしました。
+            </p>
+
+            <div class="info-box">
+                <h3>今後の流れ</h3>
+                <p>担当者がお問い合わせ内容を確認し、<strong>3営業日以内</strong>にご返信いたします。</p>
+                <p>万が一、受付完了メールが届かない場合は、迷惑メールフォルダをご確認いただくか、入力いただいたメールアドレスに誤りがある可能性がございます。</p>
+            </div>
+
+            <div class="button-group">
+                <a href="/rikutera-site" class="button button-primary">トップページへ戻る</a>
+                <a href="/rikutera-site/register/giver/" class="button button-secondary">無料で登録する</a>
+            </div>
+        </div>
+
+        <div class="next-steps">
+            <h3>リクテラで就活をはじめませんか？</h3>
+            <ul class="step-list">
+                <li class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>無料登録（3分）</h4>
+                        <p>ギバープランなら、月5件の情報提供で全サービスが無料で利用可能です。</p>
+                    </div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>AI自己分析</h4>
+                        <p>My Story Roomで、あなたの経験から隠れた強みを可視化します。</p>
+                    </div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>プロのサポート</h4>
+                        <p>ES添削、面接対策、キャリア面談など、内定まで徹底サポートします。</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="../assets/logo.png" alt="リクテラ">
+                    </div>
+                    <p class="footer-desc">採用活動をとおして、双方にとって「出会えてよかった」という喜びを生み出します。学生と企業、人と人とをつなぐプラットフォームです。</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">サポート</h4>
+                    <ul class="footer-links">
+                        <li><a href="/rikutera-site/company/">運営会社</a></li>
+                        <li><a href="/rikutera-site/privacy/">プライバシーポリシー</a></li>
+                        <li><a href="/rikutera-site/terms/">利用規約</a></li>
+                        <li><a href="/rikutera-site/contact/">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">SNS</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">𝕏</a>
+                        <a href="#" class="social-link">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 リクテラ (Rikutera). All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
