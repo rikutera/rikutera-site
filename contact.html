@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | リクテラ</title>
+    <meta name="description" content="リクテラへのお問い合わせフォーム。サービスやプランに関するご質問、取材依頼など、お気軽にお問い合わせください。">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        body {
+            background: #F9FAFB;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 80px 20px 100px;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .contact-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 16px;
+        }
+
+        .contact-subtitle {
+            font-size: 16px;
+            color: #64748B;
+            line-height: 1.8;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 32px;
+        }
+
+        .notice-box {
+            background: #FEF3C7;
+            border-left: 4px solid #FBBF24;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 32px;
+        }
+
+        .notice-box h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #92400E;
+            margin-bottom: 12px;
+        }
+
+        .notice-box p {
+            font-size: 14px;
+            color: #78350F;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .notice-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .form-label .required {
+            color: #DC2626;
+            margin-left: 4px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #1E3A8A;
+        }
+
+        .form-select {
+            background: white;
+        }
+
+        .form-textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        .form-note {
+            font-size: 13px;
+            color: #64748B;
+            margin-top: 4px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: #1E3A8A;
+            color: white;
+            padding: 18px 32px;
+            border-radius: 12px;
+            border: none;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3);
+        }
+
+        .submit-button:disabled {
+            background: #9CA3AF;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: #1E3A8A;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .info-section {
+            background: #F0F9FF;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+
+        .info-section h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1E3A8A;
+            margin-bottom: 16px;
+        }
+
+        .info-section p {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .info-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 40px 20px 60px;
+            }
+
+            .contact-title {
+                font-size: 28px;
+            }
+
+            .contact-card {
+                padding: 24px;
+            }
+
+            .info-section {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <nav class="header-nav">
+        <div class="container">
+            <a href="/rikutera-site" class="logo">
+                <img src="assets/logo.png" alt="リクテラ">
+                <span class="logo-text">リクテラ</span>
+            </a>
+            <a href="/rikutera-site" class="nav-cta" style="background: #1E3A8A;">トップページへ</a>
+        </div>
+    </nav>
+
+    <div class="contact-container">
+        <a href="/rikutera-site" class="back-link">← トップページに戻る</a>
+
+        <div class="contact-header">
+            <h1 class="contact-title">お問い合わせ</h1>
+            <p class="contact-subtitle">サービスやプランに関するご質問、取材依頼など、<br>お気軽にお問い合わせください。</p>
+        </div>
+
+        <!-- Notice Box -->
+        <div class="notice-box">
+            <h3>お問い合わせにあたってのお願い</h3>
+            <p>サービスの勧誘、キャンペーンの紹介等はご遠慮ください。</p>
+            <p>お問い合わせ内容によっては、回答にお時間をいただく場合や、回答いたしかねる場合がございます。あらかじめご了承ください。</p>
+        </div>
+
+        <!-- Response Time Info -->
+        <div class="info-section">
+            <h3>お問い合わせ対応について</h3>
+            <p>お問い合わせいただいた内容は、原則として3営業日以内にご返信いたします。</p>
+            <p>土日祝日および年末年始はお休みをいただいております。</p>
+            <p>お急ぎの場合は、お問い合わせ内容にその旨をご記載ください。</p>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-card">
+            <form id="contactForm">
+                <!-- Contact Purpose -->
+                <div class="form-group">
+                    <label class="form-label">
+                        お問い合わせ目的<span class="required">*</span>
+                    </label>
+                    <select class="form-select" name="purpose" required>
+                        <option value="">選択してください</option>
+                        <option value="service">サービスについて</option>
+                        <option value="plan">プランについて</option>
+                        <option value="interview">取材依頼について</option>
+                        <option value="other">その他</option>
+                    </select>
+                </div>
+
+                <!-- Name -->
+                <div class="form-group">
+                    <label class="form-label">
+                        お名前<span class="required">*</span>
+                    </label>
+                    <input type="text" class="form-input" name="name" required placeholder="山田 太郎">
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label class="form-label">
+                        メールアドレス<span class="required">*</span>
+                    </label>
+                    <input type="email" class="form-input" name="email" required placeholder="example@email.com">
+                    <p class="form-note">返信先のメールアドレスをご入力ください</p>
+                </div>
+
+                <!-- Organization (Optional) -->
+                <div class="form-group">
+                    <label class="form-label">
+                        学校名・企業名
+                    </label>
+                    <input type="text" class="form-input" name="organization" placeholder="○○大学 / ○○株式会社">
+                    <p class="form-note">任意：取材依頼の場合はご記入ください</p>
+                </div>
+
+                <!-- Subject -->
+                <div class="form-group">
+                    <label class="form-label">
+                        件名<span class="required">*</span>
+                    </label>
+                    <input type="text" class="form-input" name="subject" required placeholder="お問い合わせの件名をご入力ください">
+                </div>
+
+                <!-- Message -->
+                <div class="form-group">
+                    <label class="form-label">
+                        お問い合わせ内容<span class="required">*</span>
+                    </label>
+                    <textarea class="form-textarea" name="message" required placeholder="お問い合わせ内容を詳しくご記入ください"></textarea>
+                    <p class="form-note">できるだけ詳しくご記入いただけますと、スムーズにご対応できます</p>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-button">送信する</button>
+
+                <p style="text-align: center; margin-top: 24px; font-size: 14px; color: #64748B;">
+                    3営業日以内にご返信いたします
+                </p>
+            </form>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="info-section">
+            <h3>よくあるご質問</h3>
+            <p>お問い合わせの前に、<a href="/rikutera-site/#faq" style="color: #1E3A8A; text-decoration: underline;">よくあるご質問（FAQ）</a>もご確認ください。</p>
+            <p>多くのご質問については、FAQページで解決策をご案内しております。</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = {
+                purpose: this.purpose.value,
+                name: this.name.value,
+                email: this.email.value,
+                organization: this.organization.value,
+                subject: this.subject.value,
+                message: this.message.value
+            };
+
+            // Here you would normally send the form data to your backend
+            // For now, we'll just show an alert
+            alert('お問い合わせを受け付けました。\n\n3営業日以内にご返信いたしますので、今しばらくお待ちください。\n\n実際のシステムでは、この情報がサーバーに送信され、担当者にメール通知されます。');
+
+            // Optionally redirect to a confirmation page
+            // window.location.href = '/contact/complete/';
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="リクテラ">
+                    </div>
+                    <p class="footer-desc">採用活動をとおして、双方にとって「出会えてよかった」という喜びを生み出します。学生と企業、人と人とをつなぐプラットフォームです。</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">サポート</h4>
+                    <ul class="footer-links">
+                        <li><a href="/rikutera-site/company/">運営会社</a></li>
+                        <li><a href="/rikutera-site/privacy/">プライバシーポリシー</a></li>
+                        <li><a href="/rikutera-site/terms/">利用規約</a></li>
+                        <li><a href="/rikutera-site/contact/">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">SNS</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">𝕏</a>
+                        <a href="#" class="social-link">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 リクテラ (Rikutera). All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
